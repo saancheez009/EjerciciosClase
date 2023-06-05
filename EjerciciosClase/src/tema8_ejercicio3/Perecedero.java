@@ -12,7 +12,7 @@ public class Perecedero extends Producto{
  * @param nombre
  * @param precio
  */
-	public Perecedero(String nombre, int precio,int diasCaducar) {
+	public Perecedero(String nombre, double precio,int diasCaducar) {
 		super(nombre, precio);
 		if(diasCaducar>0) {
 			this.diasCaducar = diasCaducar;

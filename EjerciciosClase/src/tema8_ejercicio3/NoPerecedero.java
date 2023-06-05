@@ -13,7 +13,7 @@ public class NoPerecedero extends Producto {
 	 * @param nombre
 	 * @param precio
 	 */
-	public NoPerecedero(String nombre, int precio, String tipo) {
+	public NoPerecedero(String nombre, double precio, String tipo) {
 		super(nombre, precio);
 		if (tipo != null && !tipo.isEmpty()) {
 			this.tipo = tipo;

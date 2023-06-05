@@ -4,19 +4,29 @@ import java.util.Objects;
 
 public class Producto implements Comparable<Producto> {
 	protected String nombre = " ";
-	protected int precio;
+	protected double precio;
 
 	public Producto() {
 		super();
 
 	}
+	
+/**
+ * 
+ * @param nombre
+ */
+	public Producto(String nombre) {
+		super();
+		this.nombre = nombre;
+	}
+
 
 	/**
 	 * 
 	 * @param nombre
 	 * @param precio
 	 */
-	public Producto(String nombre, int precio) {
+	public Producto(String nombre,double precio) {
 		super();
 		if (nombre != null && !nombre.isEmpty()) {
 			this.nombre = nombre;
@@ -48,7 +58,7 @@ public class Producto implements Comparable<Producto> {
 	 * 
 	 * @return
 	 */
-	public int getPrecio() {
+	public double getPrecio() {
 		return precio;
 	}
 
@@ -56,7 +66,7 @@ public class Producto implements Comparable<Producto> {
 	 * 
 	 * @param precio
 	 */
-	public void setPrecio(int precio) {
+	public void setPrecio(double precio) {
 		if (precio > 0) {
 			this.precio = precio;
 		}
@@ -91,6 +101,11 @@ public class Producto implements Comparable<Producto> {
 			res=true;
 		}
 		return res;
+	}
+
+	public static void add(Producto prod) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
