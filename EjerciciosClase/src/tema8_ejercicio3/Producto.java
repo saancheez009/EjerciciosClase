@@ -103,9 +103,6 @@ public class Producto implements Comparable<Producto> {
 		return res;
 	}
 
-	public static void add(Producto prod) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 }

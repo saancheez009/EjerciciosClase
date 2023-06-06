@@ -9,13 +9,12 @@ import java.util.TreeSet;
 public class Menú {
 
 	public static void main(String[] args) {
-		String nombre;
+		String nombre = "";
 		double precio;
 		String tipo;
 		int opcion;
 		int diasCaducar;
 		Producto prod=null;
-		Perecedero perecedero=null;
 		Scanner sc = new Scanner(System.in);
 		
 		TreeSet<Producto> listaProductos = new TreeSet<Producto>();
@@ -31,12 +30,14 @@ public class Menú {
 		System.out.println("3. Eliminar producto");
 		System.out.println("0. Salir");
 		opcion=sc.nextInt();
-
+		
+do {
 		switch (opcion) {
 		case 1: 
 			System.out.println("Por favor introduzca los datos del producto");
 			System.out.println("nombre,precio y tipo de producto: 'perecedero', 'no perecedero' ");
 			nombre=sc.nextLine();
+			sc.nextLine();
 			precio=sc.nextDouble();
 			sc.nextLine();
 			tipo=sc.nextLine();
@@ -44,12 +45,14 @@ public class Menú {
 			if(tipo.equalsIgnoreCase("perecedero")) {
 				System.out.println("Por favor introduzca los días a caducar del producto");
 				diasCaducar=sc.nextInt();
-				perecedero = new Perecedero (nombre,precio,diasCaducar);
-				Perecedero.add(perecedero);
+				prod = new Perecedero (nombre,precio,diasCaducar);
+				listaProductos.add(prod);
+			} else {
+				System.out.println("Introduzca el tipo del producto");
+				tipo = sc.nextLine();
+				prod = new NoPerecedero(nombre,precio,tipo);
+				listaProductos.add(prod);
 			}
-			
-			prod = new Producto (nombre,precio);
-			Producto.add(prod);
 			break;
 			
 		case 2:
@@ -60,17 +63,7 @@ public class Menú {
 			
 			break;
 		case 3:
-			System.out.println("Por favor introduzca el nombre del producto que desea eliminar");
-			nombre=sc.nextLine();
-			prod = new Producto (nombre);
-			if (listaProductos.remove(prod)) {
-				//Y mostrará un mensaje de eliminado correctamente
-				System.out.println("Producto eliminado correctamente");
-			// En caso contrario
-			} else {
-				//Mostrará un mensaje de que no se encuentra
-				System.out.println("No se ha podido eliminar el producto, compruebe que el producto se encuentre en el listado");
-			}
+			eliminar(nombre, prod, sc, listaProductos);
 			break;
 			
 			
@@ -79,6 +72,31 @@ public class Menú {
 			System.out.println("Saliendo del sistema...");
 			
 			break;
+		}
+	}while(opcion!=0);
+	}
+
+
+	
+	/**
+	 * 
+	 * @param nombre
+	 * @param o
+	 * @param sc
+	 * @param listaProductos
+	 */
+	public static void eliminar(String nombre, Object o,Scanner sc, TreeSet<Producto> listaProductos) {
+		Producto prod;
+		System.out.println("Por favor introduzca el nombre del producto que desea eliminar");
+		nombre=sc.nextLine();
+		prod = new Producto (nombre);
+		if (listaProductos.remove(prod)) {
+			//Y mostrará un mensaje de eliminado correctamente
+			System.out.println("Producto eliminado correctamente");
+		// En caso contrario
+		} else {
+			//Mostrará un mensaje de que no se encuentra
+			System.out.println("No se ha podido eliminar el producto, compruebe que el producto se encuentre en el listado");
 		}
 	}
 
