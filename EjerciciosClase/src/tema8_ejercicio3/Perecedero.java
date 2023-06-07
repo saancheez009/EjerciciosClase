@@ -18,7 +18,15 @@ public class Perecedero extends Producto{
 			this.diasCaducar = diasCaducar;
 		}
 	}
+	
+	
 
+	public int getDiasCaducar() {
+	return diasCaducar;
+}
+public void setDiasCaducar(int diasCaducar) {
+	this.diasCaducar = diasCaducar;
+}
 	@Override
 	public double calcular(int cantidad) {
 		double result = super.calcular(cantidad);
