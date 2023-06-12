@@ -1,5 +1,6 @@
 package tema8_ejercicio3;
 
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -11,7 +12,7 @@ public class Menú {
 	static Scanner sc = new Scanner(System.in);
 	static Producto prod = null;
 	static double precio;
-	private static String listaProd;
+	private static String listaProd=;
 
 	public static void main(String[] args) {
 		String nombre = "";
@@ -160,8 +161,10 @@ public class Menú {
 
 	public static void guardar() throws IOException {
 		try {
-			FileWriter fw = new FileWriter(listaProd);
-			for (Producto productos : listaProductos) {
+			BufferedWriter in = new BufferedWriter(new FileWriter(listaProd));
+
+			
+			for (Producto producto : listaProductos) {
 
 			}
 		} catch (FileNotFoundException e) {
