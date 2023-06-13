@@ -12,9 +12,9 @@ public class Menú {
 	static Scanner sc = new Scanner(System.in);
 	static Producto prod = null;
 	static double precio;
-	private static String listaProd=;
+	private static String listaProd = "src\\tema8_ejercicio3\\listaProd.txt";
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		String nombre = "";
 
 		String tipo;
@@ -72,7 +72,7 @@ public class Menú {
 				modificar();
 				break;
 			case 5:
-
+				guardar();
 				break;
 
 			case 0:
@@ -160,13 +160,22 @@ public class Menú {
 	}
 
 	public static void guardar() throws IOException {
+		BufferedWriter in = null;
+		
 		try {
-			BufferedWriter in = new BufferedWriter(new FileWriter(listaProd));
+			in = new BufferedWriter(new FileWriter(listaProd));
 
 			
 			for (Producto producto : listaProductos) {
-
+				if (producto instanceof Perecedero) {
+					
+				 in.write(producto.getNombre()+";"+ producto.getPrecio()+";"+ ((Perecedero) producto).getDiasCaducar());
+				 
+			}else if (producto instanceof NoPerecedero) {
+				in.write(producto.getNombre()+";"+producto.getPrecio()+";"+((NoPerecedero)producto).getTipo());
 			}
+			}
+		
 		} catch (FileNotFoundException e) {
 			System.out.println(e.getMessage());
 		}
